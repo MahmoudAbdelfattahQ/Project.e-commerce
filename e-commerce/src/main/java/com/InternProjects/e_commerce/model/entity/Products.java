@@ -6,7 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -43,6 +45,9 @@ public class Products {
     @Column(name = "Is_Available")
     private Boolean  isAvailable;
 
-    @OneToMany(mappedBy = "cart", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER , cascade = CascadeType.ALL)
     private Set<CartProducts> cartProducts = new HashSet<>();
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER , cascade = CascadeType.ALL)
+    private List<OrderItem> ordersItem = new ArrayList<>();
 }

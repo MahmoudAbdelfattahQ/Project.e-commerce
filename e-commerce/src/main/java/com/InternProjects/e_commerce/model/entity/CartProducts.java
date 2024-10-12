@@ -1,24 +1,18 @@
 package com.InternProjects.e_commerce.model.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
-import java.util.HashSet;
-import java.util.Set;
 
+
+@Data
 @Entity
 @Table(name = "Cart_Products")
 public class CartProducts {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @ManyToOne
-    @JoinColumn(name = "cart_id" )
-    private Cart cart;
-
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Products product;
 
     @Column(name = "price" )
     private double price;
@@ -26,8 +20,13 @@ public class CartProducts {
     @Column(name = "quantity" )
     private int quantity;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn( name = "Cart_id" ,insertable = false, updatable = false)
+    private Cart cart;
 
-
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn( name = "product_id",insertable = false, updatable = false)
+    private Products product;
 
 
 }

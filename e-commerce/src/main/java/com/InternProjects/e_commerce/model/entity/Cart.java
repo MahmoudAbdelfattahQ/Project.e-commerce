@@ -13,15 +13,15 @@ public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id ;
+    private Long CartId ;
 
-     @Column(name = "Total_price")
+    @Column(name = "Total_price")
     private double totalPrice;
 
     @Column(name = "Customer_ID")
     private int customerId;
 
-    @OneToMany(mappedBy = "Cart_ID" ,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cart" ,fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
     private Set<CartProducts> cartProducts = new HashSet<>();
 
 }

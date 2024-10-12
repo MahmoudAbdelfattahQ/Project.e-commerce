@@ -16,8 +16,8 @@ public class Customers {
     private String customerPhone;
     @Column(name = "Address",nullable = false)
     private String customerAddress;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "User_id" ,referencedColumnName = "User_ID" ,nullable = false  )
+    @OneToOne
+    @JoinColumn(name = "User_ID")
     private Users user;
 
 }
