@@ -1,6 +1,6 @@
 package com.InternProjects.e_commerce.model.dto;
 
-import com.InternProjects.e_commerce.model.entity.Products;
+import com.InternProjects.e_commerce.model.entity.Product;
 import lombok.Data;
 
 
@@ -10,5 +10,5 @@ public class InventoryDto {
     private Long productId;
     private Integer warehouseId;
     private Integer quantity;
-    private Products product;
+    private Product product;
 }

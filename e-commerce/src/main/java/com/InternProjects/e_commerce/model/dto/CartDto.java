@@ -1,6 +1,6 @@
 package com.InternProjects.e_commerce.model.dto;
 
-import com.InternProjects.e_commerce.model.entity.CartProducts;
+import com.InternProjects.e_commerce.model.entity.CartProduct;
 import lombok.Data;
 
 import java.util.Set;
@@ -9,6 +9,6 @@ import java.util.Set;
 public class CartDto {
     private double totalPrice;
     private int customerId;
-    private Set<CartProducts> cartProducts ;
+    private Set<CartProduct> cartProducts ;
 
 }

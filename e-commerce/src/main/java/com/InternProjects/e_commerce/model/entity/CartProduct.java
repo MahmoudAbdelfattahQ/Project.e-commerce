@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "Cart_Products")
-public class CartProducts {
+public class CartProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,7 @@ public class CartProducts {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn( name = "product_id",insertable = false, updatable = false)
-    private Products product;
+    private Product product;
 
 
 }

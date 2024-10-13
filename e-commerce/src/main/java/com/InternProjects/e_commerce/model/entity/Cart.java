@@ -22,6 +22,6 @@ public class Cart {
     private int customerId;
 
     @OneToMany(mappedBy = "cart" ,fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
-    private Set<CartProducts> cartProducts = new HashSet<>();
+    private Set<CartProduct> cartProducts = new HashSet<>();
 
 }

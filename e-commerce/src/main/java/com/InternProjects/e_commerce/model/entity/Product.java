@@ -18,7 +18,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "Products")
-public class Products {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Product_ID")
@@ -46,7 +46,7 @@ public class Products {
     private Boolean  isAvailable;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER , cascade = CascadeType.ALL)
-    private Set<CartProducts> cartProducts = new HashSet<>();
+    private Set<CartProduct> cartProducts = new HashSet<>();
 
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER , cascade = CascadeType.ALL)
     private List<OrderItem> ordersItem = new ArrayList<>();

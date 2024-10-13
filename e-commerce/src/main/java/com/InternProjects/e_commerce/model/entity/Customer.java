@@ -3,12 +3,10 @@ package com.InternProjects.e_commerce.model.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.UUID;
-
 @Data
 @Entity
 @Table(name = "Customers")
-public class Customers {
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerId;
@@ -18,6 +16,6 @@ public class Customers {
     private String customerAddress;
     @OneToOne
     @JoinColumn(name = "User_ID")
-    private Users user;
+    private User user;
 
 }

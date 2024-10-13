@@ -21,5 +21,5 @@ public class Inventory {
 
     @ManyToOne
     @JoinColumn(name = "Product_ID", referencedColumnName = "product_Id", insertable = false, updatable = false)
-    private Products product;
+    private Product product;
 }

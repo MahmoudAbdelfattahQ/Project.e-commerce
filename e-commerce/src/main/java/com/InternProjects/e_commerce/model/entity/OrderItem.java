@@ -1,9 +1,15 @@
 package com.InternProjects.e_commerce.model.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "Order_Items")
 public class OrderItem {
@@ -20,10 +26,10 @@ public class OrderItem {
 
     @ManyToOne
     @JoinColumn(name = "order_id",insertable = false ,updatable = false)
-    private Orders order;
+    private Order order;
 
     @ManyToOne
     @JoinColumn(name = "product_id",insertable = false ,updatable = false)
-    private Products product;
+    private Product product;
 
 }

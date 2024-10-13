@@ -2,7 +2,7 @@ package com.InternProjects.e_commerce.model.dto;
 
 import java.sql.Timestamp;
 
-public class UsersDto {
+public class UserDto {
     private String userName;
     private String password;
     private String email;

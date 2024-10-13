@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Data
-public class OrdersDto {
+public class OrderDto {
 
     private long customerID;
     private Timestamp orderDate;
