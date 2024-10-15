@@ -3,9 +3,12 @@ package com.InternProjects.e_commerce.user;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @CrossOrigin(origins = "*", methods =
@@ -22,7 +25,12 @@ public class UserController  {
     }
 
     @GetMapping("profile/add")
-    public ResponseEntity<String> addUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<String> addUser(@Validated @RequestBody UserDto userDto , BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(Objects.requireNonNull(bindingResult.getFieldError()).getDefaultMessage());
+        }
+
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.addUser(userDto));
     }
 
@@ -32,13 +40,19 @@ public class UserController  {
     }
 
     @GetMapping("getUserByEmail/{email}")
-    public User getUserByEmail(@PathVariable String email) {
+    public User getUserByEmail(@Validated @PathVariable String email) {
         return  userService.getUserByEmail(email);
     }
 
 
     @PutMapping("update/{id}")
-    public ResponseEntity<String> updateUser(@PathVariable UUID id ,@RequestBody UserDto userDto) {
+    public ResponseEntity<String> updateUser(@PathVariable UUID id ,@Validated @RequestBody UserDto userDto , BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(Objects.requireNonNull(bindingResult.getFieldError()).getDefaultMessage());
+        }
+
        String msg = userService.updateUser(id ,userDto);
         return ResponseEntity.ok(msg);
 
