@@ -11,11 +11,11 @@ public interface OrderItemService {
 
     void deleteOrderItem(OrderItem orderItem);
 
-    void deleteByID(int id);
+    void deleteByID(long id);
 
-    OrderItem findByID(int id);
+    OrderItem findByID(long id);
 
-    Optional<OrderItem> findById(int id);
+    Optional<OrderItem> findById(long id);
 
     List<OrderItem> findAll();
 }

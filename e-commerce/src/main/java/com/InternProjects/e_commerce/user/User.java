@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.sql.Timestamp;
 import java.util.UUID;
@@ -31,6 +32,7 @@ public class User {
 
     @Column(name = "Password", nullable = false)
     private String password;
+
 
     @Column(name = "Email" ,unique = true ,nullable = false)
     private String email;

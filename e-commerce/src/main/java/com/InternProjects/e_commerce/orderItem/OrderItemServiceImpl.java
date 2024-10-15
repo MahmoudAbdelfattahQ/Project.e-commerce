@@ -1,5 +1,6 @@
 package com.InternProjects.e_commerce.orderItem;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,7 @@ public class OrderItemServiceImpl implements OrderItemService {
 
     private final OrderItemRepo orderItemRepo;
 
+    @Autowired
     public OrderItemServiceImpl(OrderItemRepo orderItemRepo) {
         this.orderItemRepo = orderItemRepo;
     }
@@ -22,14 +24,17 @@ public class OrderItemServiceImpl implements OrderItemService {
 
     @Override
     public void update(OrderItem orderItem) {
-       orderItemRepo.findById(orderItem.getOrderItemID())
-               .ifPresentOrElse(orderItem1 ->
-               {
-//                   orderItem1.setItemPrice(orderItem.getItemPrice()),
-//                           orderItem1.setQuantity(orderItem.getQuantity()),
-//                           orderItem1.setOrder(orderItem.getOrder()),
-//                           orderItem1.setProduct(orderItem.getProduct());
-               },null);
+       orderItemRepo.findByOrderItemID(orderItem.getOrderItemID()).ifPresent(
+               orderItem1 -> {
+                       orderItem1.setOrderItemID(orderItem.getOrderItemID());
+                       orderItem1.setQuantity(orderItem.getQuantity());
+                       orderItem1.setItemPrice(orderItem.getItemPrice());
+                       orderItem1.setOrder(orderItem.getOrder());
+                       orderItem1.setProduct(orderItem.getProduct());
+
+                       orderItemRepo.save(orderItem1);
+               }
+       );
 
     }
 
@@ -39,18 +44,18 @@ public class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
-    public void deleteByID(int id) {
-     orderItemRepo.deleteById(id);
+    public void deleteByID(long id) {
+     orderItemRepo.deleteByOrderItemID(id);
     }
 
     @Override
-    public OrderItem findByID(int id) {
+    public OrderItem findByID(long id) {
         return null;
     }
 
     @Override
-    public Optional<OrderItem> findById(int id) {
-        return orderItemRepo.findById(id);
+    public Optional<OrderItem> findById(long id) {
+        return orderItemRepo.findByOrderItemID(id);
     }
 
     @Override
