@@ -5,6 +5,7 @@ import com.InternProjects.e_commerce.exceptions.UserNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +23,7 @@ public class UserServiceImpl  implements UserService {
         this.userRepo = userRepo;
     }
 
+    @Transactional
     @Override
     public String addUser(UserDto userDto) throws UserIsExistException {
 
@@ -37,6 +39,7 @@ public class UserServiceImpl  implements UserService {
 
     }
 
+    @Transactional
     @Override
     public String updateUser(UUID id ,UserDto userDto)  throws UserNotFoundException{
         User userExist = userRepo.findByUserId(id).orElseThrow(
@@ -56,13 +59,14 @@ public class UserServiceImpl  implements UserService {
 
     }
 
+    @Transactional
     @Override
     public String deleteUser(UUID id) throws UserNotFoundException {
 
         Optional<User> userOptional = userRepo.findByUserId(id);
 
         if (userOptional.isPresent()) {
-            userRepo.deleteByUserId(id);
+            userRepo.deleteUserByUserId(id);
             log.info("Deleted user {}", id);
             return "Deleted user with id {" +id + "}";
         } else {

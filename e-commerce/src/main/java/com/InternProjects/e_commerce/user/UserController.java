@@ -1,6 +1,6 @@
 package com.InternProjects.e_commerce.user;
 
-import com.InternProjects.e_commerce.exceptions.UserNotFoundException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+@CrossOrigin(origins = "*", methods =
+        {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+
 @RestController
-@RequestMapping("/user/")
+@RequestMapping("/user")
 public class UserController  {
 
     private final UserService userService;
@@ -18,37 +21,37 @@ public class UserController  {
         this.userService = userService;
     }
 
-    @GetMapping("/profile/add")
+    @GetMapping("profile/add")
     public ResponseEntity<String> addUser(@RequestBody UserDto userDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.addUser(userDto));
     }
 
-    @GetMapping("/profile/{id}")
-    public User getUser(@PathVariable UUID id) {
+    @GetMapping("get/{id}")
+    public User getUserByID(@PathVariable UUID id) {
         return  userService.getUser(id);
     }
 
-    @PostMapping("profile/{email}")
-    public User getUser(@PathVariable String email) {
+    @GetMapping("getUserByEmail/{email}")
+    public User getUserByEmail(@PathVariable String email) {
         return  userService.getUserByEmail(email);
     }
 
 
-
-    @PutMapping("/profile/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<String> updateUser(@PathVariable UUID id ,@RequestBody UserDto userDto) {
        String msg = userService.updateUser(id ,userDto);
         return ResponseEntity.ok(msg);
 
     }
 
-    @DeleteMapping("/profile/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable UUID id) {
-
-        return ResponseEntity.ok(userService.deleteUser(id));
+            return ResponseEntity.ok(userService.deleteUser(id));
     }
 
-
-
+    @GetMapping("getAll")
+    public List<User> getAllUSer(){
+        return userService.getAllUsers();
+    }
 
 }

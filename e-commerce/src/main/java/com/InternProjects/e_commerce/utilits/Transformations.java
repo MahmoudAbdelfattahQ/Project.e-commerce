@@ -4,20 +4,19 @@ import com.InternProjects.e_commerce.user.User;
 import com.InternProjects.e_commerce.user.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.UUID;
 public class Transformations {
 
 
-    private static final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+   // private static final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
    private Transformations(){
    }
 
-    private static String encodePassword(String rawPassword) {
-        return bCryptPasswordEncoder.encode(rawPassword);
-    }
+//    private static String encodePassword(String rawPassword) {
+//        return bCryptPasswordEncoder.encode(rawPassword);
+//    }
     public static UserDto transformToDto(User user) {
      return    UserDto.builder()
                 .userName(user.getUserName())
@@ -39,7 +38,7 @@ public class Transformations {
                 .email(userDto.getEmail())
                 .role(userDto.getRole())
                 .DateJoined(userDto.getDateJoined())
-                .password(encodePassword(userDto.getPassword()))
+                .password(userDto.getPassword())
                 .build();
     }
 
