@@ -40,4 +40,26 @@ public class GlobalExceptionHandler  extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.CONFLICT);
 
     }
+
+    @ExceptionHandler(CartDoseExistException.class)
+    public ResponseEntity<ErrorResponse> handleCartDoseExistExceptions(CartDoseExistException ex) {
+        log.info("This cart is already exist Code : {} , Massage : {}",ex.getErrorCode() , ex.getMessage());
+        ErrorResponse error = new ErrorResponse();
+        error.setCode(ex.getErrorCode());
+        error.setMessage(ex.getErrorMessage());
+        error.setDetails("This cart is already exist in the database");
+        error.setLocalDateTime(LocalDateTime.now());
+        return new ResponseEntity<>(error, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(CartNotFoundException.class)
+    public ResponseEntity<ErrorResponse>  handleCartNotFoundExceptions(CartNotFoundException ex) {
+        log.info("The cart which send to updated is not found in the database");
+        ErrorResponse error = new ErrorResponse();
+        error.setLocalDateTime(LocalDateTime.now());
+        error.setCode(ex.getErrorCode());
+        error.setMessage(ex.getErrorMessage());
+        error.setDetails("The cart which send to updated is not found in the database");
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
 }

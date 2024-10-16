@@ -24,7 +24,7 @@ public class UserController  {
         this.userService = userService;
     }
 
-    @GetMapping("profile/add")
+    @PostMapping ("add")
     public ResponseEntity<String> addUser(@Validated @RequestBody UserDto userDto , BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)

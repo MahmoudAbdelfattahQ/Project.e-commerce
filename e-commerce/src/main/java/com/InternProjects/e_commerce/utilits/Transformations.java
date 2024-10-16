@@ -2,8 +2,7 @@ package com.InternProjects.e_commerce.utilits;
 
 import com.InternProjects.e_commerce.user.User;
 import com.InternProjects.e_commerce.user.UserDto;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 import java.util.UUID;
 public class Transformations {

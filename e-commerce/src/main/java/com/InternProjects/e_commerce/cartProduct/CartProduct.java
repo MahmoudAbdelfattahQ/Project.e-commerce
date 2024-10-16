@@ -1,6 +1,6 @@
 package com.InternProjects.e_commerce.cartProduct;
 
-import com.InternProjects.e_commerce.cart.Cart;
+import com.InternProjects.e_commerce.carts.Cart;
 import com.InternProjects.e_commerce.product.Product;
 import jakarta.persistence.*;
 import lombok.Data;
