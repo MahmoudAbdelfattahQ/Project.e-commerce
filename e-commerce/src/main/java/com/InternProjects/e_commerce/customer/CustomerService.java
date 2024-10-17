@@ -5,10 +5,10 @@ import java.util.Optional;
 
 
 public interface CustomerService  {
-    void saveCustomer(Customer customer);
+    void saveCustomer(CustomerDto customerDto);
     void updateCustomer(Customer customer);
-    void deleteCustomer(int id);
-    Optional<Customer> getCustomer(int id);
+    void deleteCustomer(Long id);
+    Customer getCustomer(long id);
     List<Customer> getCustomers();
 
 }

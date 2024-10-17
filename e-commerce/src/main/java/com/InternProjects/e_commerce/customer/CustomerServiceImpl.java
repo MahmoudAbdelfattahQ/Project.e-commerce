@@ -17,25 +17,37 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void saveCustomer(Customer customer) {
-        customerRepo.save(customer);
+    public void saveCustomer(CustomerDto customerDto) {
+
+        Customer customer = CustomerMapper.Instance.toCustomer(customerDto);
+         customerRepo.save(customer);
     }
 
     @Override
     public void updateCustomer(Customer customer) {
-        customerRepo.save(customer);
+
+        customerRepo.findByCustomerId(customer.getCustomerId())
+                .ifPresent(customer1 -> {
+                    customer1.setCustomerId(customer.getCustomerId());
+                    customer1.setCustomerAddress(customer.getCustomerAddress());
+                    customer1.setCustomerPhone(customer.getCustomerPhone());
+                    customer1.setUser(customer.getUser());
+                    customerRepo.save(customer1);
+                });
+
+
 
     }
 
     @Override
-    public void deleteCustomer(int id) {
-        customerRepo.deleteById(id);
+    public void deleteCustomer(Long id) {
+        customerRepo.deleteByCustomerId(id);
 
     }
 
     @Override
-    public Optional<Customer> getCustomer(int id) {
-        return customerRepo.findById(id);
+    public Customer getCustomer(long id) {
+         return customerRepo.findByCustomerId(id).get();
 
     }
 
