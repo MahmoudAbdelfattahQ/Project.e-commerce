@@ -54,8 +54,9 @@ public class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
-    public Optional<OrderItem> findById(long id) {
-        return orderItemRepo.findByOrderItemID(id);
+    public OrderItem findById(long id) {
+      return orderItemRepo.findByOrderItemID(id).get();
+
     }
 
     @Override

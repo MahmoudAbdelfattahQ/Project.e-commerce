@@ -5,13 +5,13 @@ import java.util.Optional;
 
 public interface OrderService {
 
-    void createOrder(Order order);
+    void createOrder(OrderDto orderDto);
 
     void updateOrder(Order order);
 
-    void deleteOrder(int id);
+    void deleteOrder(Long id);
 
-    Optional<Order> getOrder(int id);
+    Order getOrder(long id);
 
     List<Order> getAllOrders();
 

@@ -3,7 +3,7 @@ package com.InternProjects.e_commerce.order;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -15,7 +15,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void createOrder(Order order) {
+    public void createOrder(OrderDto orderDto) {
+        Order order = OrderMapper.Instance.toOrder(orderDto);
         orderRepo.save(order);
 
     }
@@ -27,14 +28,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void deleteOrder(int id) {
-        orderRepo.deleteById(id);
+    public void deleteOrder(Long id) {
+        orderRepo.deleteByOrderID(id);
 
     }
 
     @Override
-    public Optional<Order> getOrder(int id) {
-        return orderRepo.findById(id);
+    public Order getOrder(long id) {
+           return orderRepo.findByOrderID(id);
     }
 
     @Override

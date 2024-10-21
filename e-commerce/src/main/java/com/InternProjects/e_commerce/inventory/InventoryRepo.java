@@ -5,4 +5,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InventoryRepo extends JpaRepository<Inventory, Integer> {
+
+    void deleteByInventoryId(long id);
+    Inventory findByInventoryId(long id);
 }

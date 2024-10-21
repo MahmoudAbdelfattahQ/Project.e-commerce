@@ -15,7 +15,7 @@ public interface OrderItemService {
 
     OrderItem findByID(long id);
 
-    Optional<OrderItem> findById(long id);
+    OrderItem findById(long id);
 
     List<OrderItem> findAll();
 }
