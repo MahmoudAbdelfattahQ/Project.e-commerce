@@ -1,7 +1,8 @@
 package com.InternProjects.e_commerce.warehouse;
 import jakarta.persistence.*;
+import lombok.Data;
 
-
+@Data
 @Entity
 @Table(name = "Warehouses")
 public class Warehouse {

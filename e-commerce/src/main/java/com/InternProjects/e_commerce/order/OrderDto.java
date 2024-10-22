@@ -1,5 +1,6 @@
 package com.InternProjects.e_commerce.order;
 
+import com.InternProjects.e_commerce.orderItem.OrderItem;
 import com.InternProjects.e_commerce.orderItem.OrderItemDto;
 import lombok.Data;
 
@@ -14,6 +15,6 @@ public class OrderDto {
     private double totalAmount;
     private String shippingAddress;
     private String orderStatus;
-    private List<OrderItemDto> orderItem;
+    private List<OrderItem> orderItem;
 
 }

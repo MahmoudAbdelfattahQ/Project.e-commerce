@@ -16,7 +16,15 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void addProduct(ProductDto productDto) {
-        Product product = ProductMapper.Instance.mappToProduct(productDto);
+        Product product = new Product();
+        product.setCartProducts(productDto.getCartProducts());
+        product.setBrand(productDto.getBrand());
+        product.setDescription(productDto.getDescription());
+        product.setPrice(productDto.getPrice());
+        product.setPrice(productDto.getPrice());
+        product.setIsAvailable(productDto.getIsAvailable());
+        product.setWeight(productDto.getWeight());
+        product.setTitle(productDto.getTitle());
         productRepo.save(product);
     }
 

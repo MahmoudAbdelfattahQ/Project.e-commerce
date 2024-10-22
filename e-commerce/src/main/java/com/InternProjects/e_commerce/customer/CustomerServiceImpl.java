@@ -4,7 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
+import static com.InternProjects.e_commerce.customer.CustomerTransformations.toCustomer;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -19,8 +20,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void saveCustomer(CustomerDto customerDto) {
 
-        Customer customer = CustomerMapper.Instance.toCustomer(customerDto);
-         customerRepo.save(customer);
+         customerRepo.save(toCustomer(customerDto));
     }
 
     @Override
@@ -34,8 +34,6 @@ public class CustomerServiceImpl implements CustomerService {
                     customer1.setUser(customer.getUser());
                     customerRepo.save(customer1);
                 });
-
-
 
     }
 

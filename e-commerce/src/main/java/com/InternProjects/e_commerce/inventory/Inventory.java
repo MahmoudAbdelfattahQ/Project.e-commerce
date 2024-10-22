@@ -2,8 +2,13 @@ package com.InternProjects.e_commerce.inventory;
 
 import com.InternProjects.e_commerce.product.Product;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "inventory")
 public class Inventory {

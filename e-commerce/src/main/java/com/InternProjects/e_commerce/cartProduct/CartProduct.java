@@ -3,11 +3,16 @@ package com.InternProjects.e_commerce.cartProduct;
 import com.InternProjects.e_commerce.carts.Cart;
 import com.InternProjects.e_commerce.product.Product;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
 
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Cart_Products")
 public class CartProduct {

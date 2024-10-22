@@ -17,7 +17,11 @@ public class InventoryServiceImpl implements InventoryService {
     }
     @Override
     public void addInventory(InventoryDto inventoryDto) {
-        Inventory inventory = InventoryMapper.Instance.toInventory(inventoryDto);
+        Inventory inventory = new Inventory();
+        inventory.setProduct(inventoryDto.getProduct());
+        inventory.setQuantity(inventoryDto.getQuantity());
+        inventory.setProductId(inventoryDto.getProductId());
+        inventory.setWarehouseId(inventoryDto.getWarehouseId());
         inventoryRepo.save(inventory);
 
     }

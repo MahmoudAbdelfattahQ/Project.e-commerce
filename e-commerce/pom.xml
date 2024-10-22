@@ -54,6 +54,7 @@
 		</dependency>
 
 
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -80,16 +81,11 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
+
 		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct</artifactId>
-			<version>1.5.2.Final</version> <!-- Check for the latest version -->
-		</dependency>
-		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct-processor</artifactId>
-			<version>1.5.2.Final</version>
-			<scope>provided</scope>
+			<groupId>org.springframework.restdocs</groupId>
+			<artifactId>spring-restdocs-mockmvc</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 
@@ -109,7 +105,13 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+
+
 		</plugins>
+
+
+
 	</build>
 
 </project>

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.InternProjects.e_commerce.carts.CartTransformations.toCart;
+
 @Service
 public class CartServiceImpl implements CartService {
 
@@ -19,7 +21,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void addCart(CartDto cartDto) throws CartDoseExistException {
-        Cart cart = CartMapper.Instance.toCart(cartDto);
+        Cart cart = toCart(cartDto);
         cartRepo.findByCustomerId(cart.getCustomerId())
                 .ifPresent(
                         (cart1)-> { throw new CartDoseExistException();

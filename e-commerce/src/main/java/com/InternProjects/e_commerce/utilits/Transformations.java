@@ -8,14 +8,10 @@ import java.util.UUID;
 public class Transformations {
 
 
-   // private static final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-
    private Transformations(){
    }
 
-//    private static String encodePassword(String rawPassword) {
-//        return bCryptPasswordEncoder.encode(rawPassword);
-//    }
+
     public static UserDto transformToDto(User user) {
      return    UserDto.builder()
                 .userName(user.getUserName())

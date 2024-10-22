@@ -16,7 +16,14 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void createOrder(OrderDto orderDto) {
-        Order order = OrderMapper.Instance.toOrder(orderDto);
+        Order order = new Order();
+        order.setOrderDate(orderDto.getOrderDate());
+        order.setOrderItem(orderDto.getOrderItem());
+        order.setOrderStatus(orderDto.getOrderStatus());
+        order.setCustomerID(orderDto.getCustomerID());
+        order.setShippingAddress(orderDto.getShippingAddress());
+        order.setTotalAmount(orderDto.getTotalAmount());
+
         orderRepo.save(order);
 
     }

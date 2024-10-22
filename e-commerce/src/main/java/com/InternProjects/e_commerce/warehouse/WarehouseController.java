@@ -13,7 +13,6 @@ public class WarehouseController {
     private final WarehouseServiceImpl warehouseServiceImpl;
 
     public WarehouseController( WarehouseServiceImpl warehouseServiceImpl) {
-
         this.warehouseServiceImpl = warehouseServiceImpl;
     }
     @PostMapping("add")
@@ -42,7 +41,5 @@ public class WarehouseController {
         warehouseServiceImpl.deleteWarehouse(id);
         return ResponseEntity.ok("Warehouse deleted");
     }
-
-
 
 }

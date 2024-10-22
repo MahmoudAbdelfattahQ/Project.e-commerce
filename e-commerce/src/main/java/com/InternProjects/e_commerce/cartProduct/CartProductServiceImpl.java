@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.InternProjects.e_commerce.cartProduct.CartProductTransformation.toCartProduct;
+
+
 @Service
 public class CartProductServiceImpl implements CartProductService {
 
@@ -14,8 +17,7 @@ public class CartProductServiceImpl implements CartProductService {
     }
     @Override
     public void createCart(CartProductDto cartProductDto) {
-    CartProduct cartProduct = CartProductMapper.Instance.toCartProduct(cartProductDto);
-        cartProductRepo.save(cartProduct);
+        cartProductRepo.save(toCartProduct(cartProductDto));
     }
 
     @Override

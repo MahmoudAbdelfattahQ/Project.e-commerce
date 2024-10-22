@@ -16,7 +16,9 @@ public class WarehouseServiceImpl implements WarehouseService {
 
     @Override
     public void addWarehouse(WarehouseDto warehouseDto) {
-        Warehouse warehouse = WarehouseMapper.Instance.toWarehouse(warehouseDto);
+        Warehouse warehouse = new Warehouse();
+        warehouse.setWarehouseName(warehouseDto.getWarehouseName());
+        warehouse.setLocation(warehouseDto.getLocation());
         warehouseRepo.save(warehouse);
 
     }
