@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.InternProjects.e_commerce.utilits.Updates.updateValues;
+
 @Service
 public class InventoryServiceImpl implements InventoryService {
 
@@ -34,7 +36,9 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public void updateInventory(Inventory inventory) {
-        inventoryRepo.save(inventory);
+        Inventory inventory1 = inventoryRepo.findByInventoryId(inventory.getInventoryId());
+        Inventory inventory2 = (Inventory) updateValues(inventory,inventory1);
+        inventoryRepo.save(inventory2);
 
     }
 

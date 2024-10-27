@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.InternProjects.e_commerce.utilits.Updates.updateFields;
+
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -30,7 +32,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void updateOrder(Order order) {
-        orderRepo.save(order);
+        Order exitingOrder = orderRepo.findByOrderID(order.getOrderID());
+        Order newOrder = (Order) updateFields(order,exitingOrder);
+        orderRepo.save(newOrder);
 
     }
 

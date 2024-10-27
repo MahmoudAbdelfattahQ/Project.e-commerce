@@ -4,6 +4,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.InternProjects.e_commerce.utilits.Updates.updateValues;
+
+
 @Service
 public class WarehouseServiceImpl implements WarehouseService {
 
@@ -25,7 +28,11 @@ public class WarehouseServiceImpl implements WarehouseService {
 
     @Override
     public void updateWarehouse(Warehouse warehouse) {
-        warehouseRepo.save(warehouse);
+
+
+        Warehouse warehouse1 = warehouseRepo.findById(warehouse.getWarehouseId()).get();
+        Warehouse warehouse2 = (Warehouse) updateValues(warehouse, warehouse1);
+        warehouseRepo.save( warehouse2);
 
     }
 

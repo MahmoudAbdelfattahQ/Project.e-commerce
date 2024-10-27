@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 import static com.InternProjects.e_commerce.carts.CartTransformations.toCart;
+import static com.InternProjects.e_commerce.utilits.Updates.updateValues;
 
 @Service
 public class CartServiceImpl implements CartService {
@@ -34,11 +35,8 @@ public class CartServiceImpl implements CartService {
         Cart cart =  cartRepo.findCartByCartId(cart1.getCartId())
                 .orElseThrow(CartNotFoundException::new);
 
-        cart.setCartProducts(cart1.getCartProducts());
-        cart.setTotalPrice(cart1.getTotalPrice());
-        cart.setCustomerId(cart1.getCustomerId());
-
-        cartRepo.save(cart);
+        Cart cart2 = (Cart) updateValues(cart1 ,cart);
+        cartRepo.save(cart2);
 
     }
 

@@ -1,11 +1,11 @@
 package com.InternProjects.e_commerce.cartProduct;
 
-import com.InternProjects.e_commerce.carts.Cart;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 import static com.InternProjects.e_commerce.cartProduct.CartProductTransformation.toCartProduct;
+import static com.InternProjects.e_commerce.utilits.Updates.updateValues;
 
 
 @Service
@@ -21,10 +21,11 @@ public class CartProductServiceImpl implements CartProductService {
     }
 
     @Override
-    public void updateCart(CartProduct cartProduct) {
-        if(cartProductRepo.existsById(cartProduct.getId())){
-            cartProductRepo.save(cartProduct);
-        }
+    public void updateCart(CartProduct newCartProduct) {
+        CartProduct exitingCartProduct = cartProductRepo.findById(newCartProduct.getId());
+        CartProduct cartProduct = (CartProduct) updateValues(newCartProduct, exitingCartProduct);
+        cartProductRepo.save(cartProduct);
+
     }
 
     @Override

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 import static com.InternProjects.e_commerce.customer.CustomerTransformations.toCustomer;
+import static com.InternProjects.e_commerce.utilits.Updates.updateValues;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -28,11 +29,8 @@ public class CustomerServiceImpl implements CustomerService {
 
         customerRepo.findByCustomerId(customer.getCustomerId())
                 .ifPresent(customer1 -> {
-                    customer1.setCustomerId(customer.getCustomerId());
-                    customer1.setCustomerAddress(customer.getCustomerAddress());
-                    customer1.setCustomerPhone(customer.getCustomerPhone());
-                    customer1.setUser(customer.getUser());
-                    customerRepo.save(customer1);
+                    Customer customer2 = (Customer) updateValues(customer,customer1);
+                    customerRepo.save(customer2);
                 });
 
     }

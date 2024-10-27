@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import static com.InternProjects.e_commerce.utilits.Updates.updateFields;
+
 @Service
 public class OrderItemServiceImpl implements OrderItemService {
 
@@ -26,13 +28,8 @@ public class OrderItemServiceImpl implements OrderItemService {
     public void update(OrderItem orderItem) {
        orderItemRepo.findByOrderItemID(orderItem.getOrderItemID()).ifPresent(
                orderItem1 -> {
-                       orderItem1.setOrderItemID(orderItem.getOrderItemID());
-                       orderItem1.setQuantity(orderItem.getQuantity());
-                       orderItem1.setItemPrice(orderItem.getItemPrice());
-                       orderItem1.setOrder(orderItem.getOrder());
-                       orderItem1.setProduct(orderItem.getProduct());
-
-                       orderItemRepo.save(orderItem1);
+                      OrderItem newOrderItem = (OrderItem) updateFields(orderItem,orderItem1) ;
+                       orderItemRepo.save(newOrderItem);
                }
        );
 
