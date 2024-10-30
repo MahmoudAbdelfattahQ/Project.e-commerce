@@ -33,8 +33,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void updateOrder(Order order) {
         Order exitingOrder = orderRepo.findByOrderID(order.getOrderID());
-        Order newOrder = (Order) updateFields(order,exitingOrder);
-        orderRepo.save(newOrder);
+        orderRepo.save(updateFields(order,exitingOrder));
 
     }
 

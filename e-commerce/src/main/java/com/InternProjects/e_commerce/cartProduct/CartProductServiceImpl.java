@@ -23,8 +23,7 @@ public class CartProductServiceImpl implements CartProductService {
     @Override
     public void updateCart(CartProduct newCartProduct) {
         CartProduct exitingCartProduct = cartProductRepo.findById(newCartProduct.getId());
-        CartProduct cartProduct = (CartProduct) updateValues(newCartProduct, exitingCartProduct);
-        cartProductRepo.save(cartProduct);
+        cartProductRepo.save( updateValues(newCartProduct, exitingCartProduct));
 
     }
 

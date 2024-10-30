@@ -34,9 +34,8 @@ public class ProductServiceImpl implements ProductService {
     public void updateProduct(Product product) {
 
         Product existingProduct = productRepo.findById(product.getId());
+        productRepo.save( updateValues(product, existingProduct) );
 
-        Product product1 = (Product) updateValues(product, existingProduct);
-        productRepo.save(product1);
 
 
     }

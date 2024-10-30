@@ -28,11 +28,8 @@ public class WarehouseServiceImpl implements WarehouseService {
 
     @Override
     public void updateWarehouse(Warehouse warehouse) {
-
-
         Warehouse warehouse1 = warehouseRepo.findById(warehouse.getWarehouseId()).get();
-        Warehouse warehouse2 = (Warehouse) updateValues(warehouse, warehouse1);
-        warehouseRepo.save( warehouse2);
+        warehouseRepo.save(updateValues(warehouse, warehouse1));
 
     }
 

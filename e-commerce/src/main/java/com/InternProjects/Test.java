@@ -2,6 +2,7 @@ package com.InternProjects;
 
 import com.InternProjects.e_commerce.warehouse.Warehouse;
 
+import static com.InternProjects.e_commerce.utilits.Updates.updateFields;
 import static com.InternProjects.e_commerce.utilits.Updates.updateValues;
 
 public class Test {
@@ -17,7 +18,7 @@ public class Test {
         source.setWarehouseName("Aswan");
 
 
-        System.out.println(updateValues(source ,target) );
+        System.out.println(updateFields(source ,target) );
 
 
     }

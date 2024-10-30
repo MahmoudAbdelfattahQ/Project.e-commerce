@@ -35,8 +35,7 @@ public class CartServiceImpl implements CartService {
         Cart cart =  cartRepo.findCartByCartId(cart1.getCartId())
                 .orElseThrow(CartNotFoundException::new);
 
-        Cart cart2 = (Cart) updateValues(cart1 ,cart);
-        cartRepo.save(cart2);
+        cartRepo.save( updateValues(cart1 ,cart));
 
     }
 

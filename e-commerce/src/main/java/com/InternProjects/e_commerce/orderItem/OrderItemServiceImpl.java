@@ -28,8 +28,8 @@ public class OrderItemServiceImpl implements OrderItemService {
     public void update(OrderItem orderItem) {
        orderItemRepo.findByOrderItemID(orderItem.getOrderItemID()).ifPresent(
                orderItem1 -> {
-                      OrderItem newOrderItem = (OrderItem) updateFields(orderItem,orderItem1) ;
-                       orderItemRepo.save(newOrderItem);
+
+                       orderItemRepo.save(updateFields(orderItem,orderItem1));
                }
        );
 

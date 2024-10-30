@@ -29,8 +29,8 @@ public class CustomerServiceImpl implements CustomerService {
 
         customerRepo.findByCustomerId(customer.getCustomerId())
                 .ifPresent(customer1 -> {
-                    Customer customer2 = (Customer) updateValues(customer,customer1);
-                    customerRepo.save(customer2);
+
+                    customerRepo.save(updateValues(customer,customer1));
                 });
 
     }

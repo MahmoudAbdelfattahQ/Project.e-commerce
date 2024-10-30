@@ -9,7 +9,7 @@ public class Updates {
 
     private Updates(){}
 
-    public static Object updateFields(Object source, Object target) {
+    public static <T> T updateFields(T source, T target) {
         Field[] fields = source.getClass().getDeclaredFields();
 
         for (Field field : fields) {
@@ -20,11 +20,12 @@ public class Updates {
                 ReflectionUtils.setField(field, target, value);
             }
         }
+
         return target;
     }
 
 
-    public static Object updateValues(Object source, Object target) {
+    public static <T> T updateValues(T source, T target) {
 
 
         Arrays.stream(source.getClass().getDeclaredFields())
