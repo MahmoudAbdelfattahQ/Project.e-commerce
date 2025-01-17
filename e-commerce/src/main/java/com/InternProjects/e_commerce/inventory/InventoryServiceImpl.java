@@ -1,6 +1,7 @@
 package com.InternProjects.e_commerce.inventory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import static com.InternProjects.e_commerce.utilits.Updates.updateValues;
 
 @Service
 public class InventoryServiceImpl implements InventoryService {
+
 
     private final InventoryRepo inventoryRepo;
 

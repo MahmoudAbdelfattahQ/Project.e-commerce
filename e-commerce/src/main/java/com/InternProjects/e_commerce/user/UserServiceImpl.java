@@ -37,6 +37,7 @@ public class UserServiceImpl  implements UserService {
 
         return "User " + userDto.getUserName() + " is added successfully ";
 
+
     }
 
     @Transactional
@@ -52,6 +53,8 @@ public class UserServiceImpl  implements UserService {
         userExist.setRole(userDto.getRole());
         userExist.setPassword(userDto.getPassword());
         userExist.setDateJoined(userDto.getDateJoined());
+
+
 
       userRepo.save(userExist);
          log.info("User {} updated successfully", userDto.getUserName());
